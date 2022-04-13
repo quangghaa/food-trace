@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 .App-logo {
@@ -35,4 +35,242 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* MY CSS HERE  */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  line-height: 42px;
+  font-size: 20px;  
+}
+
+.sider {
+  background-color: white;
+  height: 100%;
+}
+
+.title {
+  padding-left: 1em;
+}
+
+.title::before {
+  content: "|";
+  color: #e0e0e0;
+  font-weight: 400;
+}
+
+.title .name {
+  margin-left: 1em;
+  color: black;
+  font-weight: 550;
+}
+
+.mg-left {
+  margin-left: 1em;
+}
+
+.header-icons span:hover{
+  cursor: pointer;
+  color: #525b6d;
+}
+
+#header-hr {
+ border-top: 1px solid #e0e0e0;
+ margin: unset;
+}
+
+/* Dashboard Section A */
+#dbsa {
+  background-image: url('./static/imgs/dbsa.jpg');
+  background-repeat: no-repeat;
+  height: 250px;
+  opacity: 0.8;
+  text-align: left;
+}
+
+.title-box {
+  font-size: 28px;
+  width: fit-content;
+  color: white;
+  font-weight: 550;
+  background-color: rgb(18, 122, 9);
+  padding: 1em 2em;
+  opacity: 0.5;
+}
+
+/* Dashboard Section B */
+#dbsb {
+  text-align: left;
+  margin: 1em 0;
+  padding: 0 10px;
+}
+
+#dbsb-title {
+  font-size: 20px;
+
+}
+
+#dbsb-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.ant-card-head-title {
+  font-weight: 550;
+}
+
+.count {
+  font-size: 24px;
+  font-weight: 550;
+}
+
+/* Dashboard Section C  */
+#dbsc {
+  text-align: left;
+  margin: 1em 0;
+  padding: 0 10px;
+}
+
+/* Dashboard Section D  */
+#dbsd {
+  text-align: left;
+  margin: 1em 0;
+  padding: 0 10px;
+}
+
+#dbsd .ant-card-body {
+  padding: 10px;
+}
+
+.second-row {
+  margin-top: 4em;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Page Header  */
+#page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+
+}
+
+#page-header .name {
+  font-size: 24px;
+  font-weight: 600;
+
+}
+
+#page-header .buttons {
+  
+}
+
+.clear {
+  background-color: black;
+  color: white;
+  margin-right: 10px;
+}
+
+.trace {
+  background-color: white;
+  color: black;
+  
+}
+
+.container {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+}
+
+.padding {
+  padding: 5px;
+}
+
+.hr {
+  padding: 0 10px;
+  margin: 10px;
+}
+
+.suggestion {
+  font-weight: 600;
+  margin: 0 0 0 10px;
+}
+
+/* ID Search */
+.search-wrapper {
+  width: 100%;
+  height: 500px;
+  background-color: white;
+  text-align: left;
+  padding: 10px;
+}
+
+.search-type {
+  font-size: 14px;
+}
+
+
+.total-found {
+  margin: 1em 0;
+}
+
+.found-hr {
+  margin: 2em 0 1em 0;
+}
+
+#found .id{
+  font-weight: 600;
+}
+
+#found .name{
+  font-weight: 600;
+}
+
+#found .owner{
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.hint {
+  margin: 1em 0;
+  display: flex;
+
+}
+
+.more-hint {
+
+}
+
+.st-ed {
+  display: flex;
+  margin: 1em 0;
+}
+
+.sm-section {
+  height: 280px;
+}
+
+/* Detail search  */
+.buttons {
+  display: flex;
+
+}
+
+.buttons .clear {
+  margin: 0 0 0 1em;
+}
+
+.search-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.pallet-table-title {
+  margin: 1em 0 0 0;
+  font-weight: 600;
 }
