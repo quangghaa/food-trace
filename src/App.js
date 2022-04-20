@@ -21,6 +21,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Trace from './pages/Trace';
+import Tree from './pages/Tree';
 
 function App() {
   const { SubMenu } = Menu;
@@ -59,6 +61,8 @@ const { Header, Content, Sider } = Layout;
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/product-search" element={<ProductSearch />} />
                 <Route path="/product-search/:id" element={<DetailSearch />} />
+                <Route path="/trace" element={<Trace />} />
+                <Route path="/tree" element={<Tree />} />
                 <Route path="/documents" element={<Document />} />
                 <Route path="/upload" element={<DocumentUpload />} />
                 <Route path="/document/:id" element={<DocumentDetail />} />
