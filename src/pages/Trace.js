@@ -77,31 +77,10 @@ const Trace = () => {
                 <div className="trace-section">
                     <Row gutter={8}>
                         <Col span={4}>
-                            {/* <div className="product-title">
-                                <span className="bold">Farm</span>
-                                <span>1</span>
-                            </div>
-
-                            <div className="product highlight">
-                                <span className="drop-icon"><DownOutlined /></span>
-                                <span className="bold">Product</span>
-                                <span>1 Farm</span>
-                            </div>
-
-                            <div className="product highlight">
-                                <span className="drop-icon"><DownOutlined /></span>
-                                <span className="bold">Product</span>
-                                <span>1 Farm</span>
-                            </div> */}
-
                             <TraceItems title='Farm' total={total} items={data} />
                         </Col>
                         <Col span={4}>
-                        <div className="product highlight">
-                                <span className="drop-icon"><DownOutlined /></span>
-                                <span className="bold">Product</span>
-                                <span>1 Farm</span>
-                            </div>
+                            2
                         </Col>
                         <Col span={4}>
                             3
