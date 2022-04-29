@@ -1,11 +1,11 @@
-import React from "react";
-import { Table } from "antd";
+import React, { useEffect, useState } from "react";
+import { Spin, Table } from "antd";
 
-const Lot = () => {
+const Lot = (props) => {
     const columns = [
         {
             title: 'ID',
-            dataIndex: 'id',
+            dataIndex: 'key',
             render: (text) => <a>{text}</a>,
         },
         {
@@ -16,21 +16,6 @@ const Lot = () => {
             title: 'Production date',
             dataIndex: 'production',
         },
-    ];
-
-    const data = [
-        {
-            key: '324',
-            expire: '01/01/2023',
-            production: '---',
-            totalFound: 2
-        },
-        {
-            key: '325',
-            expire: '01/01/2023',
-            production: '---',
-            totalFound: 2
-        }
     ];
 
     const rowSelection = {
@@ -47,9 +32,9 @@ const Lot = () => {
     return (
         <>
             <div className="search-wrapper">
-                <span className="search-title">{data ? data[0].totalFound : 0} Lots</span>
-
-                {data && data[0].totalFound > 0 ?
+                <span className="search-title">{props.data ? props.data.length : 0} Lots</span>
+                {props.loading ? <Spin size='large' /> : <></>}
+                {props.data && props.data.length > 0 ?
                     <>
                         <Table
                             rowSelection={{
@@ -57,7 +42,7 @@ const Lot = () => {
                                 ...rowSelection,
                             }}
                             columns={columns}
-                            dataSource={data}
+                            dataSource={props.data}
                             pagination={false}
                         />
                     </>

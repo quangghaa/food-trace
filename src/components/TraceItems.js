@@ -1,17 +1,25 @@
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import colors from "../utils/Color";
 
 const TraceItems = (props) => {
+    const [show, setShow] = useState([]);
     let arr = [];
-    for(let i=0; i<props.total; i++) {
-        const obj = {
-            index: i,
-            state: false
-        }
-        arr.push(obj);
-    }
 
-    const [show, setShow] = useState(arr);
+    useEffect(() => {
+        console.log("PROPS: ", props);
+        for(let i=0; i<props.data.length; i++) {
+            const obj = {
+                index: i,
+                state: false
+            }
+            arr.push(obj);
+        }
+        setShow(arr);
+
+        // Set color
+
+    }, [props.data])
 
     const onShow = (index) => {
         for(let i=0; i<show.length; i++) {
@@ -24,28 +32,25 @@ const TraceItems = (props) => {
         }
     }
 
-    console.log("show: ", show);
-    console.log("RENDER");
-
     return (
         <>
             <div className="product-title">
                 <span className="bold">{props.title}</span>
-                <span>{props.total}</span>
+                <span>{props.data.length}</span>
             </div>
 
-            {props.items.map((item, i) => (
+            {props.data.map((item, i) => (
                 <>
-                    <div className="product highlight" onClick={() => onShow(i)}>
+                    <div id="item" className="product highlight" onClick={() => onShow(i)} style={{borderLeft: `3px solid ${colors[item.Color]}`}}>
                         <span className="drop-icon">
-                            {!show[i].state ? <DownOutlined /> : <UpOutlined />}
+                            {show.length > 0 && !show[i].state ? <DownOutlined /> : <UpOutlined />}
                         </span>
-                        <span className="bold">{item.productName}</span>
-                        <span>{item.total} Farm</span>
+                        <span className="bold">{item.Product}</span>
+                        <span>{item.Unit.length} {item.Unit.length > 1 ? props.title + 's' : props.title}</span>
                     </div>
-                    {show[i].state ? item.places.map((place, i) => (
+                    {show.length > 0 && show[i].state ? item.Unit.map((place, i) => (
                         <div className="place">
-                            <span>{place.id}&nbsp;{place.name}</span>
+                            <span>{place}</span>
                         </div>
                     )): <></>}
 

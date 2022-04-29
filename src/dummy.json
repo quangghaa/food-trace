@@ -1,0 +1,325 @@
+[
+    {
+        "id": "1000900093.bkNA",
+        "po": "8888",
+        "name": "Pizza hải sản",
+        "owner": "Vn Food",
+        "lot": [
+            {
+                "key": 324,
+                "expire": "01/01/2023",
+                "production": "---"
+            },
+            {
+                "key": 325,
+                "expire": "01/01/2023",
+                "production": "---"
+            }
+        ],
+        "pallet": [
+            {
+                "number": 2116,
+                "totalFound": 2
+            },
+            {
+                "number": 2118,
+                "totalFound": 2
+            }
+        ],
+        "serial": [
+            {
+                "number": 6183,
+                "totalFound": 4
+            },
+            {
+                "number": 7183,
+                "totalFound": 4
+            },
+            {
+                "number": 8183,
+                "totalFound": 4
+            },
+            {
+                "number": 9183,
+                "totalFound": 4
+            }
+        ]
+        
+    },
+    {
+        "id": "1000900094.bkNA",
+        "po": "8838",
+        "name": "Pizza bò",
+        "owner": "Vn Food",
+        "lot": [
+            {
+                "key": 224,
+                "expire": "01/01/2023",
+                "production": "---"
+            },
+            {
+                "key": 225,
+                "expire": "01/01/2023",
+                "production": "---"
+            }
+        ],
+        "pallet": [
+            {
+                "number": 3116,
+                "totalFound": 2
+            },
+            {
+                "number": 3118,
+                "totalFound": 2
+            }
+        ],
+        "serial": [
+            {
+                "number": 7183,
+                "totalFound": 4
+            },
+            {
+                "number": 8183,
+                "totalFound": 4
+            },
+            {
+                "number": 9183,
+                "totalFound": 4
+            },
+            {
+                "number": 6183,
+                "totalFound": 4
+            }
+        ]
+    },
+    {
+        "id": "1000900095.bkNA",
+        "po": "8898",
+        "name": "Mì ý",
+        "owner": "Vn Food",
+        "lot": [
+            {
+                "key": 124,
+                "expire": "01/01/2023",
+                "production": "---"
+            },
+            {
+                "key": 125,
+                "expire": "01/01/2023",
+                "production": "---"
+            }
+        ],
+        "pallet": [
+            {
+                "number": 1116,
+                "totalFound": 2
+            },
+            {
+                "number": 1118,
+                "totalFound": 2
+            }
+        ],
+        "serial": [
+            {
+                "number": 6383,
+                "totalFound": 4
+            },
+            {
+                "number": 7383,
+                "totalFound": 4
+            },
+            {
+                "number": 8383,
+                "totalFound": 4
+            },
+            {
+                "number": 9383,
+                "totalFound": 4
+            }
+        ]
+    },
+    {
+        "id": "1000900096.bkNA",
+        "po": "8868",
+        "name": "Hamburger",
+        "owner": "Vn Food",
+        "lot": [
+            {
+                "key": 624,
+                "expire": "01/01/2023",
+                "production": "---"
+            },
+            {
+                "key": 625,
+                "expire": "01/01/2023",
+                "production": "---"
+            }
+        ],
+        "pallet": [
+            {
+                "number": 2146,
+                "totalFound": 2
+            },
+            {
+                "number": 2148,
+                "totalFound": 2
+            }
+        ],
+        "serial": [
+            {
+                "number": 6163,
+                "totalFound": 4
+            },
+            {
+                "number": 7163,
+                "totalFound": 4
+            },
+            {
+                "number": 8163,
+                "totalFound": 4
+            },
+            {
+                "number": 9163,
+                "totalFound": 4
+            }
+        ]
+    },
+    {
+        "id": "1000900097.bkNA",
+        "po": "8828",
+        "name": "Tiger Bia",
+        "owner": "Vn Food",
+        "lot": [
+            {
+                "key": 324,
+                "expire": "01/01/2023",
+                "production": "---"
+            },
+            {
+                "key": 325,
+                "expire": "01/01/2023",
+                "production": "---"
+            }
+        ],
+        "pallet": [
+            {
+                "number": 2116,
+                "totalFound": 2
+            },
+            {
+                "number": 2118,
+                "totalFound": 2
+            }
+        ],
+        "serial": [
+            {
+                "number": 6183,
+                "totalFound": 4
+            },
+            {
+                "number": 7183,
+                "totalFound": 4
+            },
+            {
+                "number": 8183,
+                "totalFound": 4
+            },
+            {
+                "number": 9183,
+                "totalFound": 4
+            }
+        ]
+    },
+    {
+        "id": "1000900098.bkNA",
+        "po": "8818",
+        "name": "Pizza gà",
+        "owner": "Vn Food",
+        "lot": [
+            {
+                "key": 924,
+                "expire": "01/01/2023",
+                "production": "---"
+            },
+            {
+                "key": 925,
+                "expire": "01/01/2023",
+                "production": "---"
+            }
+        ],
+        "pallet": [
+            {
+                "number": 9116,
+                "totalFound": 2
+            },
+            {
+                "number": 9118,
+                "totalFound": 2
+            }
+        ],
+        "serial": [
+            {
+                "number": 9183,
+                "totalFound": 4
+            },
+            {
+                "number": 7182,
+                "totalFound": 4
+            },
+            {
+                "number": 8181,
+                "totalFound": 4
+            },
+            {
+                "number": 9184,
+                "totalFound": 4
+            }
+        ]
+    },
+    {
+        "id": "1000900099.bkNA",
+        "po": "8808",
+        "name": "Pizza tiêu chuẩn",
+        "owner": "Vn Food",
+        "lot": [
+            {
+                "key": 374,
+                "expire": "01/01/2023",
+                "production": "---"
+            },
+            {
+                "key": 375,
+                "expire": "01/01/2023",
+                "production": "---"
+            }
+        ],
+        "pallet": [
+            {
+                "number": 2176,
+                "totalFound": 2
+            },
+            {
+                "number": 2178,
+                "totalFound": 2
+            }
+        ],
+        "serial": [
+            {
+                "number": 6103,
+                "totalFound": 4
+            },
+            {
+                "number": 7103,
+                "totalFound": 4
+            },
+            {
+                "number": 8180,
+                "totalFound": 4
+            },
+            {
+                "number": 9103,
+                "totalFound": 4
+            }
+        ]
+    }
+]

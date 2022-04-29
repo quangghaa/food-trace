@@ -6,6 +6,8 @@ import SearchName from '../components/SearchName';
 import SearchPO from "../components/SearchPO";
 
 const ProductSearch = () => {
+    
+
     return (
         <>
             <div className="container">

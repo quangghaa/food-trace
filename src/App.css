@@ -167,6 +167,14 @@
 
 }
 
+.pretty {
+  background-color: #5cc82d;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin: 0 1em 0 0;
+  color: white;
+}
+
 #page-header .buttons {
   
 }
@@ -241,11 +249,11 @@
 .hint {
   margin: 1em 0;
   display: flex;
-
+  color: rgb(117, 117, 117);
 }
 
 .more-hint {
-
+  color: rgb(117, 117, 117);
 }
 
 .st-ed {
@@ -255,6 +263,13 @@
 
 .sm-section {
   height: 280px;
+}
+
+.list-rs {
+  height: 180px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0 0 1em 0;
 }
 
 /* Detail search  */

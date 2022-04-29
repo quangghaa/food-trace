@@ -23,6 +23,7 @@ import {
 } from "react-router-dom";
 import Trace from './pages/Trace';
 import Tree from './pages/Tree';
+import { Counter } from './pages/Counter';
 
 function App() {
   const { SubMenu } = Menu;
@@ -66,6 +67,8 @@ const { Header, Content, Sider } = Layout;
                 <Route path="/documents" element={<Document />} />
                 <Route path="/upload" element={<DocumentUpload />} />
                 <Route path="/document/:id" element={<DocumentDetail />} />
+
+                <Route path='/redux' element={<Counter />}></Route>
               </Routes>
             </Content>
           </Layout>

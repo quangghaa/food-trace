@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Input, Radio, Space } from 'antd';
+import { Input, Radio, Space, Spin } from 'antd';
 
-const SerialNumber = () => {
+const SerialNumber = (props) => {
     const data = [
         {
             number: 6183,
@@ -39,9 +39,10 @@ const SerialNumber = () => {
     return (
         <>
             <div className="search-wrapper">
-                <span className="search-title">{data ? data[0].totalFound : 0} Serial numbers <br /></span>
+                <span className="search-title">{props.data ? props.data.length : 0} Serial numbers <br /></span>
+                {props.loading ? <Spin size='large' /> : <></>}
 
-                {data && data.length > 0 ?
+                {props.data && props.data.length > 0 ?
                     <>
                         <div className="mt-1">
                             <Search placeholder="input search text" onSearch={onSearch} />
@@ -49,7 +50,7 @@ const SerialNumber = () => {
 
                         <Radio.Group onChange={onChange} value={value}>
                             <Space direction="vertical">
-                                {data.map((v, i) => {
+                                {props.data.map((v, i) => {
                                     return (
                                         <>
                                             <Radio key={i} value={v.number}>{v.number}</Radio>
