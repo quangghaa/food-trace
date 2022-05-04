@@ -2,6 +2,7 @@ import React from "react";
 import { Row, Col, Card } from 'antd';
 import { Line } from '@ant-design/charts';
 import bigpic from '../static/imgs/big-img.jpg';
+import TraceChart from "../charts/TraceChart";
 
 const detailChartData = [   
     {
@@ -118,48 +119,16 @@ const DBSectionC = () => {
     return (
         <>
             <div id="dbsc">
-                <span className="dbsa-title">Your Organization Details</span>
+                {/* <span className="dbsa-title">Your Organization Details</span> */}
                 <Row>
-                    {detailChartData.map((chartData) => (
-                        <Col span={12}>
+                        <Col span={24}>
                             <Card>
-                                <p>{chartData.name}</p>
-                                <Line
-                                    data={chartData.data}
-                                    height={300}
-                                    xField="x"
-                                    yField="y"
-                                    point={{ size: 5, shape: 'diamon' }}
-                                    color='blue'
-                                />
+                                {/* <p>{chartData.name}</p> */}
+                                <TraceChart />
                             </Card>
                         </Col>
-                    ))}
                 </Row>
 
-                <Row>
-                    <Col span={12}>
-                        <Card>
-                            <img src={bigpic} alt="Big picture" height={372} />
-                        </Card>
-                    </Col>
-                    {eventUploadData.map((eventData) => (
-                        <Col span={12}>
-                            <Card className='chart-section'>
-                                <p>{eventData.name}</p>
-                                <Line
-                                    data={eventData.data}
-                                    height={300}
-                                    xField="x"
-                                    yField="y"
-                                    point={{ size: 5, shape: 'diamon' }}
-                                    color='blue'
-                                />
-                                <p> .  .  . </p>
-                            </Card>
-                        </Col>
-                    ))}
-                </Row>
             </div>
         </>
     )

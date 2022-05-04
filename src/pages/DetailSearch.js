@@ -51,17 +51,17 @@ const DetailSearch = () => {
                             <SearchDate setL={setL} setLot={setLot} setPal={setPallet} setSer={setSerial} />
                         </Col>
 
-                        <Col span={7} className='border'>
+                        <Col span={10} className='border-left'>
                             <Lot loading={loading} data={lotState} />
                         </Col>
 
-                        <Col span={3} className='border-right'>
+                        {/* <Col span={3} className='border-right'>
                             <Pallet loading={loading} data={palState} />
                         </Col>
 
                         <Col span={7}>
                             <SerialNumber loading={loading} data={serState} />
-                        </Col>
+                        </Col> */}
                     </Row>
                 </div>
             </div>

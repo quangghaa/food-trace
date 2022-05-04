@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { openNotification } from '../utils/Notification';
 import { useDispatch } from 'react-redux';
 import { updateId, updateName } from '../redux/slice/traceSlice';
+import { getOne } from '../services/api';
 
 const SearchPO = () => {
 
@@ -14,40 +15,32 @@ const SearchPO = () => {
 
     const dispatch = useDispatch();
 
-    const [data, setData] = useState([]);
-
     const [loading, setLoading] = useState(false);
 
     const [search, setSearch] = useState([]);
 
-    useEffect(() => {
-        const json = require('../dummy.json')
-        setData(json)
-    }, [])
-
     const onSearch = value => {
-        if (Object.keys(value.trim()).length == 0) openNotification('Warning', 'Please enter PO')
+        let inp = value.trim()
+
+        if (Object.keys(inp).length == 0) openNotification('Warning', 'Please enter a product PO')
 
         else {
-            if (Array.isArray(data)) {
-                setLoading(true)
+            setLoading(true)
+            try {
+                const getByPO = async () => {
+                    const res = await getOne("trace/purchaseOrder", inp)
 
-                setTimeout(() => {
-                    let res = data.filter((d) => {
-                        return d.po == value.trim()
-                    })
+                    if(res) setSearch(res.data)
 
-                    if (res.length > 0) {
-                        setSearch(res)
-                        setLoading(false)
-                    } else {
-                        setSearch(res)
-                        setLoading(false)
-                        openNotification('Warning', 'No product found with the PO')
-                    }
+                    if(res && res.data.length == 0) openNotification('Warning', 'No product found with the PO above')
+                }
 
-                }, 800)
-                
+                getByPO()
+
+            } catch (err) {
+                console.log("Some thing wrong: ", err)
+            } finally {
+                setLoading(false)
             }
         }
     }
@@ -57,9 +50,9 @@ const SearchPO = () => {
     }
 
     const toDetail = () => {
-        dispatch(updateId(search[0].id.trim()))
-        dispatch(updateName(search[0].name.trim()))
-            navigate(`/product-search/${search[0].id}`);
+        dispatch(updateId(search[0].Id.trim()))
+        dispatch(updateName(search[0].Product.trim()))
+            navigate(`/product-search/${search[0].Id}`);
     }
 
     return (
@@ -91,11 +84,11 @@ const SearchPO = () => {
                             <hr className='found-hr' />
                             {search.map((v, i) => (
                                 <>
-                                    <span className='id'>{v.id}</span>
+                                    <span className='id'>{v.Id}</span>
                                     <br />
-                                    <span className='name'>{v.name}</span>
+                                    <span className='name'>{v.Product}</span>
                                     <br />
-                                    <span className='owner'>{v.owner}</span>
+                                    <span className='owner'>{v.Owner}</span>
                                     <br />
                                     <br />
                                     <Button onClick={toDetail}>Use this product</Button>

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { openNotification } from '../utils/Notification';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateId, updateName, updateTrace } from '../redux/slice/traceSlice';
+import { getOne } from '../services/api';
 
 const SearchName = () => {
     const { Search } = Input;
@@ -14,61 +15,35 @@ const SearchName = () => {
 
     const dispatch = useDispatch()
 
-    const total = 1;
-    const found = [
-        {
-            id: '1000900098.bkNA',
-            name: "Product A",
-            owner: 'Food Org A',
-            totalFound: 2
-        },
-        {
-            id: '1000900099.bkNA',
-            name: "Product B",
-            owner: 'Food Org B',
-            totalFound: 2
-        }
-    ]
-
-    const [data, setData] = useState([])
-
     const [loading, setLoading] = useState(false)
 
     const [search, setSearch] = useState([])
 
-    useEffect(() => {
-        const json = require('../dummy.json')
-        setData(json)
-    }, [])
-
-    // const [select, setSelect] = useState('');
     const [value, setValue] = React.useState('');
 
-    // const select = useRef('');
-
     const onSearch = value => {
-        if (Object.keys(value.trim()).length == 0) openNotification('Warning', 'Please enter a product name')
+        let temp = value.trim()
+        let inp = temp.toLowerCase()
+
+        if (Object.keys(inp).length == 0) openNotification('Warning', 'Please enter a product name')
 
         else {
-            if (Array.isArray(data)) {
-                setLoading(true)
+            setLoading(true)
+            try {
+                const getByName = async () => {
+                    const res = await getOne("trace/productName", inp)
 
-                setTimeout(() => {
-                    let res = data.filter((d) => {
-                        return d.name.includes(value.trim())
-                    })
+                    if(res) setSearch(res.data)
 
-                    if (res.length > 0) {
-                        setSearch(res)
-                        setLoading(false)
-                    } else {
-                        setSearch(res)
-                        setLoading(false)
-                        openNotification('Warning', 'No product found with the ID')
-                    }
+                    if(res && res.data.length == 0) openNotification('Warning', 'No product found with the name above')
+                }
 
-                }, 800)
+                getByName()
 
+            } catch (err) {
+                console.log("Some thing wrong: ", err)
+            } finally {
+                setLoading(false)
             }
         }
     }
@@ -84,14 +59,14 @@ const SearchName = () => {
             openNotification('Warning', 'You should select a product first');
         } else {
             const find = search.filter((v) => {
-                return v.id == value.trim()
+                return v.Id == value.trim()
             })
 
             if(find != null) {
-                dispatch(updateId(find[0].id))
-                dispatch(updateName(find[0].name))
+                dispatch(updateId(find[0].Id))
+                dispatch(updateName(find[0].Product))
 
-                navigate(`/product-search/${find[0].id}`)
+                navigate(`/product-search/${find[0].Id}`)
             } else {
                 openNotification('Warning', 'Something went wrong');
             }
@@ -121,13 +96,13 @@ const SearchName = () => {
                                         {search.map((v, i) => {
                                             return (
                                                 <>
-                                                    <Radio key={i} value={v.id}>
-                                                        <span className='id'>{v.id}</span>
+                                                    <Radio key={i} value={v.Id}>
+                                                        <span className='id'>{v.Id}</span>
                                                         <br />
                                                         <br />
-                                                        <span className='name'>{v.name}</span>
+                                                        <span className='name'>{v.Product}</span>
                                                         <br />
-                                                        <span className='owner'>{v.owner}</span>
+                                                        <span className='owner'>{v.Owner}</span>
 
                                                     </Radio>
                                                 </>

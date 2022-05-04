@@ -9,4 +9,15 @@ const formatDate = (date) => {
     return d + '-' + m + '-' + y
 }
 
-export {formatDate}
+const revertDate = (date) => {
+    let y = date.getFullYear()+''
+    let m = date.getMonth()+ 1 + ''
+    let d = date.getDate()+''
+
+    if(m.length == 1) m = '0' + m
+    if(d.length == 1) d = '0' + d
+
+    return y + '-' + m + '-' + d
+}
+
+export {formatDate, revertDate}

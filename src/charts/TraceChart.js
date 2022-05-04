@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { getTotal } from '../../services/api';
+import { getList, getOne, getTotal } from '../services/api';
 
 import CanvasJSReact from '../lib/canvasjs.react';
 var CanvasJS = CanvasJSReact.CanvasJS;
@@ -17,10 +17,10 @@ const TraceChart = () => {
             axisX: {
                 // interval: 12,
                 // intervalType: "second",
-                valueFormatString: "hh:mm tt"
+                valueFormatString: "MMM DD"
             },
             axisY: {
-                title: "Accounts per Hour",
+                title: "Trace per day",
                 valueFormatString: "# ### ### ### ###"   // move comma to change formatting
             },
             data: [{
@@ -35,13 +35,21 @@ const TraceChart = () => {
 
         const fetchData = async () => {
             const when = new Date();
+            const y = when.getFullYear() + '';
             let data = null;
-            const res = await getTotal('accountsByHour/24');
+            const res = await getList('count/tracing');
             if (res && res.data != null) {
                 res.data.map((d) => {
+                    let day = d.Day + ''
+                    let mon = d.Month + ''
+                    if(day.length == 1) day = '0' + day
+                    if(mon.length == 1) mon = '0' + mon
+
+                    const str = y + '-' + mon + '-' + day + 'T00:00:00'
+
                     dataPoints.push({
-                        x: new Date(d.datetime),
-                        y: d.count
+                        x: new Date(str),
+                        y: d.Count
                     })
                 })
 

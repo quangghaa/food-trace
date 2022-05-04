@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { openNotification } from "../utils/Notification";
 import { useDispatch } from "react-redux";
 import { updateId, updateName } from "../redux/slice/traceSlice";
+import { getOne } from "../services/api";
 
 const a = [
     '14 digit GS-1 Global Trade Item Number (GTIN)',
@@ -18,53 +19,45 @@ const SearchID = () => {
 
     const dispatch = useDispatch();
 
-    const [data, setData] = useState([]);
-
     const [loading, setLoading] = useState(false);
 
     const [search, setSearch] = useState([]);
 
-    useEffect(() => {
-        const json = require('../dummy.json')
-        setData(json)
-    }, [])
-
     const { Search } = Input;
 
-    const onSearch = (value, e) => {
+    const onSearch = value => {
 
-        if (Object.keys(value.trim()).length == 0) openNotification('Warning', 'Please enter a product ID')
+        let temp = value.trim()
+        let inp = temp.toLowerCase()
+
+        if (Object.keys(inp).length == 0) openNotification('Warning', 'Please enter a product ID')
 
         else {
-            if (Array.isArray(data)) {
-                setLoading(true)
+            setLoading(true)
+            try {
+                const getById = async () => {
+                    const res = await getOne("trace/productId", inp)
 
-                setTimeout(() => {
-                    let res = data.filter((d) => {
-                        return d.id == value.trim()
-                    })
+                    if(res) setSearch(res.data)
 
-                    if (res.length > 0) {
-                        setSearch(res)
-                        setLoading(false)
-                    } else {
-                        setSearch(res)
-                        setLoading(false)
-                        openNotification('Warning', 'No product found with the ID')
-                    }
+                    if(res && res.data.length == 0) openNotification('Warning', 'No product found with the ID above')
+                }
 
-                }, 800)
+                getById()
 
+            } catch (err) {
+                console.log("Some thing wrong: ", err)
+            } finally {
+                setLoading(false)
             }
         }
 
-        // else navigate(`/product-search/${value.trim()}`);
     }
 
     const toDetail = () => {
-        dispatch(updateId(search[0].id.trim()))
-        dispatch(updateName(search[0].name.trim()))
-        navigate(`/product-search/${search[0].id}`)
+        dispatch(updateId(search[0].Id.trim()))
+        dispatch(updateName(search[0].Product.trim()))
+        navigate(`/product-search/${search[0].Id}`)
     }
 
     return (
@@ -100,11 +93,11 @@ const SearchID = () => {
                             <hr className='found-hr' />
                             {search.map((v, i) => (
                                 <>
-                                    <span className='id'>{v.id}</span>
+                                    <span className='id'>{v.Id}</span>
                                     <br />
-                                    <span className='name'>{v.name}</span>
+                                    <span className='name'>{v.Product}</span>
                                     <br />
-                                    <span className='owner'>{v.owner}</span>
+                                    <span className='owner'>{v.Owner}</span>
                                     <br />
                                     <br />
                                     <Button onClick={toDetail}>Use this product</Button>
