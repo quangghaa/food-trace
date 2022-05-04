@@ -18,54 +18,6 @@ const Trace = () => {
         navigate('/tree');
     }
 
-    const title = 'Farm';
-    const total = 3;
-    const data = [
-        {
-            productName: 'P1',
-            total: 1,
-            places: [
-                {
-                    id: 'ID',
-                    name: 'Places'
-                }
-            ]
-            
-        },
-        {
-            productName: 'P1',
-            total: 2,
-            places: [
-                {
-                    id: 'ID',
-                    name: 'Places'
-                },
-                {
-                    id: 'ID',
-                    name: 'Places'
-                }
-            ]
-        },
-        {
-            productName: 'P1',
-            total: 3,
-            places: [
-                {
-                    id: 'ID',
-                    name: 'Places'
-                },
-                {
-                    id: 'ID',
-                    name: 'Places'
-                },
-                {
-                    id: 'ID',
-                    name: 'Places'
-                }
-            ]
-        },
-    ];
-
     const [state, setState] = useState({
         farm: [],
         supplier: [],

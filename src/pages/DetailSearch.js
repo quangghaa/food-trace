@@ -40,8 +40,6 @@ const DetailSearch = () => {
         setSerState(s)
     }
 
-    console.log("State: ", loading, );
-
     return (
         <>
             <div className="container">
@@ -54,15 +52,15 @@ const DetailSearch = () => {
                         </Col>
 
                         <Col span={7} className='border'>
-                            <Lot loadingState={loading} data={lotState} />
+                            <Lot loading={loading} data={lotState} />
                         </Col>
 
                         <Col span={3} className='border-right'>
-                            <Pallet loadingState={loading} data={palState} />
+                            <Pallet loading={loading} data={palState} />
                         </Col>
 
                         <Col span={7}>
-                            <SerialNumber loadingState={loading} data={serState} />
+                            <SerialNumber loading={loading} data={serState} />
                         </Col>
                     </Row>
                 </div>

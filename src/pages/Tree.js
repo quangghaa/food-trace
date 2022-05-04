@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 // import MyHeader from "../components/MyHeader";
 import PageHeader from "../components/PageHeader";
 import { useNavigate } from "react-router-dom";
-import { Col, Row } from "antd";
+import { Col, Row, Spin } from "antd";
 import TraceGraph from "../components/TraceGraph";
 import axios from "axios";
 import { getList } from "../services/api";
@@ -20,31 +20,71 @@ const Tree = () => {
 
     const [loading, setLoading] = useState(false)
 
-    const [state, setState] = useState({})
+    // const [state, setState] = useState({})
 
-    console.log("STATE: ", state)
+    const [state, setState] = useState({
+        farm: [],
+        supplier: [],
+        manufacturer: [],
+        destination: [],
+        trace: {}
+    })
+
+    // useEffect(() => {
+    //     try{
+    //         setLoading(true)
+
+    //         const getTrace = async () => {
+    //             const res = await getList(`${process.env.REACT_APP_VTF_URL}trace/ingredient/pizza`)
+
+    //             if(res) {
+    //                 setState(res.data)
+    //                 console.log("RES: ", res.data)
+    //             }
+    //         }
+
+    //         getTrace()
+    //     } finally {
+    //         setLoading(false)
+    //     }
+
+    // }, [])
 
     useEffect(() => {
-        try{
-            setLoading(true)
+        // farm supplier manufacturer destination
+        const pName = 'pizza';
 
-            const getTrace = async () => {
-                const res = await getList(`${process.env.REACT_APP_VTF_URL}trace/ingredient/pizza`)
+        const farmUrl = `${process.env.REACT_APP_VTF_URL}trace/origin/${pName}`;
+        const supUrl = `${process.env.REACT_APP_VTF_URL}trace/supplier/${pName}`;
+        const manUrl = `${process.env.REACT_APP_VTF_URL}trace/manufacturer/${pName}`;
+        const desUrl = `${process.env.REACT_APP_VTF_URL}trace/destination/${pName}`;
+        const traceUrl = `${process.env.REACT_APP_VTF_URL}trace/ingredient/pizza`
 
-                if(res) {
-                    setState(res.data)
-                    console.log("RES: ", res.data)
-                }
+        const farmReq = axios.get(farmUrl);
+        const supReq = axios.get(supUrl);
+        const manReq = axios.get(manUrl);
+        const desReq = axios.get(desUrl);
+        const traceReq = axios.get(traceUrl)
+
+        setLoading(true)
+        axios.all([farmReq, supReq, manReq, desReq, traceReq]).then(axios.spread((...responses) => {
+            const newState = {
+                farm: responses[0].data,
+                supplier: responses[1].data,
+                manufacturer: responses[2].data,
+                destination: responses[3].data,
+                trace: responses[4].data
             }
 
-            getTrace()
-        } finally {
+            setState(newState);
+
+        })).catch(errs => {
+            console.log("ERRROR: ", errs);
+        }).finally( () => {
             setLoading(false)
-        }
+        })
 
     }, [])
-
-    
 
     return (
         <>
@@ -59,36 +99,27 @@ const Tree = () => {
                     <Col span={4}>
                         <div className="product-title">
                             <span className="bold">Farm</span>
-                            <span>5</span>
-                        </div>
-
-                        <div className="product-title">
-                            <span className="bold">Distribution Center</span>
-                            <span>1</span>
+                            <span>{state.farm.length}</span>
                         </div>
 
                         <div className="product-title">
                             <span className="bold">Supplier</span>
-                            <span>1</span>
+                            <span>{state.supplier.length}</span>
                         </div>
 
                         <div className="product-title">
-                            <span className="bold">Distributors</span>
-                            <span>5</span>
-                        </div>
-
-                        <div className="product-title">
-                            <span className="bold">Manufacturer of Goods</span>
-                            <span>1</span>
+                            <span className="bold">Manufacturer</span>
+                            <span>{state.manufacturer.length}</span>
                         </div>
 
                         <div className="product-title">
                             <span className="bold">Store</span>
-                            <span>1</span>
+                            <span>{state.destination.length}</span>
                         </div>
                     </Col>
                     <Col span={20}>
-                        <TraceGraph data={state}/>
+                        {loading ? <Spin size='large' /> : <></>}
+                        <TraceGraph data={state.trace}/>
                     </Col>
                 </Row>
             </div>

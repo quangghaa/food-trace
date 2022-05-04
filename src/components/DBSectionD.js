@@ -1,6 +1,6 @@
 import React from "react";
 import { Row, Col, Card } from 'antd';
-import { FileWordOutlined, ArrowRightOutlined } from '@ant-design/icons';
+import { FileWordOutlined, ArrowRightOutlined, BarsOutlined, FileTextOutlined, ApartmentOutlined, DingdingOutlined, UsergroupAddOutlined } from '@ant-design/icons';
 
 const DBSectionD = () => {
     const orgModuleData = [
@@ -9,7 +9,7 @@ const DBSectionD = () => {
             block: [
                 {
                     icon: "I1",
-                    name: "Data 1",
+                    name: "Data",
                     forwardIcon: "FI1"
                 },
                 {
@@ -51,7 +51,7 @@ const DBSectionD = () => {
                         </Col>
                         <Col span={18}>
                             <Row gutter={[16, 16]}>
-                                {data.block.map((blockdata) => (
+                                {/* {data.block.map((blockdata) => (
                                     <Col span={8}>
                                         <Card>
                                             <span><FileWordOutlined /></span>
@@ -61,7 +61,62 @@ const DBSectionD = () => {
                                             </div>
                                         </Card>
                                     </Col>
-                                ))}
+                                ))} */}
+                                <Col span={8}>
+                                    <Card>
+                                        <span><BarsOutlined /></span>
+                                        <div className='second-row'>
+                                            <span>Data</span>
+                                            <span><ArrowRightOutlined /></span>
+                                        </div>
+                                    </Card>
+                                </Col>
+                                <Col span={8}>
+                                    <Card>
+                                        <span><FileTextOutlined /></span>
+                                        <div className='second-row'>
+                                            <span>Documents</span>
+                                            <span><ArrowRightOutlined /></span>
+                                        </div>
+                                    </Card>
+                                </Col>
+                                <Col span={8}>
+                                    <Card>
+                                        <span><FileTextOutlined /></span>
+                                        <div className='second-row'>
+                                            <span>Membership</span>
+                                            <span><ArrowRightOutlined /></span>
+                                        </div>
+                                    </Card>
+                                </Col>
+
+                                <Col span={8}>
+                                    <Card>
+                                        <span><DingdingOutlined /></span>
+                                        <div className='second-row'>
+                                            <span>Onboarding</span>
+                                            <span><ArrowRightOutlined /></span>
+                                        </div>
+                                    </Card>
+                                </Col>
+                                <Col span={8}>
+                                    <Card>
+                                        <span><ApartmentOutlined /></span>
+                                        <div className='second-row'>
+                                            <span>Trace</span>
+                                            <span><ArrowRightOutlined /></span>
+                                        </div>
+                                    </Card>
+                                </Col>
+                                <Col span={8}>
+                                    <Card>
+                                        <span><UsergroupAddOutlined /></span>
+                                        <div className='second-row'>
+                                            <span>User</span>
+                                            <span><ArrowRightOutlined /></span>
+                                        </div>
+                                    </Card>
+                                </Col>
                             </Row>
                         </Col>
                     </Row>

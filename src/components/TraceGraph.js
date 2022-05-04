@@ -37,7 +37,7 @@ const TraceGraph = (props) => {
     }
 
     useEffect(() => {
-        if(props.data.Edges && props.data.Ingredient) {
+        if(Object.keys(props.data).length > 0 && props.data.Edges && props.data.Ingredient) {
             setData(convertData(props.data))
         }
         

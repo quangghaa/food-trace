@@ -11,7 +11,7 @@ import DocumentDetail from './pages/DocumentDetail';
 import DocumentUpload from './pages/DocumentUpload';
 
 import { Layout, Menu } from 'antd';
-import { MailOutlined } from '@ant-design/icons';
+import { DashboardOutlined, FileWordOutlined, MailOutlined, UserOutlined } from '@ant-design/icons';
 
 import MyHeader from './components/MyHeader';
 
@@ -41,7 +41,7 @@ const { Header, Content, Sider } = Layout;
               defaultOpenKeys={['sub1']}
               mode="inline"
             >
-              <SubMenu key="sub1" icon={<MailOutlined />} title="Trace">
+              <SubMenu key="sub1" icon={<DashboardOutlined />} title="Trace">
                 <Menu.Item key="1">
                   <Link to="/dashboard">Dashboard</Link>
                 </Menu.Item>
@@ -49,10 +49,10 @@ const { Header, Content, Sider } = Layout;
                   <Link to="/product-search">Product entry</Link>
                 </Menu.Item>
               </SubMenu>
-              <Menu.Item icon={<MailOutlined />} key="4">
+              <Menu.Item icon={<FileWordOutlined />} key="4">
                 <Link to="/documents">Document</Link>
               </Menu.Item>
-              <Menu.Item icon={<MailOutlined />} key="5">Consumer</Menu.Item>
+              <Menu.Item icon={<UserOutlined />} key="5">Consumer</Menu.Item>
             </Menu>
           </Sider>
           <Layout>

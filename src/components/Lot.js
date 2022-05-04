@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Spin, Table } from "antd";
+import { useDispatch } from "react-redux";
+import { updateLot } from "../redux/slice/traceSlice";
 
 const Lot = (props) => {
+    const dispatch = useDispatch()
+
     const columns = [
         {
             title: 'ID',
@@ -21,6 +25,7 @@ const Lot = (props) => {
     const rowSelection = {
         onChange: (selectedRowKeys, selectedRows) => {
           console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+          dispatch(updateLot(selectedRowKeys))
         },
         getCheckboxProps: (record) => ({
           disabled: record.name === 'Disabled User',
@@ -33,7 +38,7 @@ const Lot = (props) => {
         <>
             <div className="search-wrapper">
                 <span className="search-title">{props.data ? props.data.length : 0} Lots</span>
-                {props.loading ? <Spin size='large' /> : <></>}
+                {props.loading == true ? <><br /><Spin size='large' /></> : <></>}
                 {props.data && props.data.length > 0 ?
                     <>
                         <Table
